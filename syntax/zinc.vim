@@ -100,15 +100,6 @@ syn keyword zincGlobal      neural_net
 " Other declarations: https://www.minizinc.org/doc-2.5.5/en/lib-globals.html#other-declarations
 syn keyword zincGlobal      arg_max arg_min circuit disjoint maximum maximum_arg member minimum minimum_arg network_flow network_flow_cost partition_set piecewise_linear range roots sliding_sum subcircuit sum_pred sum_set 
 
-if !exists("zinc_no_highlight_overlong") || !zinc_no_highlight_overlong
-  " The complicated regexp here matches an 80-column string,
-  " with proper treatment of tabs (assuming the tab size is 8):
-  " each row consists of 10 columns, and each column consists of either 8
-  " non-tab characters, or 0-7 non-tab characters followed by a tab.
-  syn match   zincFirst80 +^\([^	]\{8}\|[^	]\{0,7}	\)\{10}+                                contains=ALL
-  syn match   zincTooLong +^\([^	]\{8}\|[^	]\{0,7}	\)\{10}..*+                             contains=zincFirst80
-endif
-
 syn region  cComment   start="/\*" end=".*\*/"                                          contains=zincToDo
 
 syn sync fromstart
